@@ -8,7 +8,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Placeholder website for Group 6's implementation of the ATS System.
+          Based on ReactJS.
         </p>
         <a
           className="App-link"
