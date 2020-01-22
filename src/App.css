@@ -1,5 +1,6 @@
 html, body{
   background-color: #282c34;
+  font-family: 'Roboto', sans-serif;
 }
 .App {
   text-align: center;
@@ -18,6 +19,13 @@ html, body{
   color: #61dafb;
 }
 
+a {
+  color: #61dafb;
+}
+
+.MuiTextField-root {
+
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
