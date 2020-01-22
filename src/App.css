@@ -23,14 +23,13 @@ a {
   color: #61dafb;
 }
 
-.MuiTextField-root {
+@media (min-width: 320px) and (max-width: 480px) {
 
-}
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  h2 {
+    font-size: 4vw;
   }
-  to {
-    transform: rotate(360deg);
+  p {
+    font-size: 4vw;
   }
+
 }
