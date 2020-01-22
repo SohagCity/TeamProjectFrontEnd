@@ -32,7 +32,8 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             ATS System
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" href="/login">Login</Button>
+          <Button color="inherit" href="/register">Register</Button>
         </Toolbar>
       </AppBar>
     </div>
