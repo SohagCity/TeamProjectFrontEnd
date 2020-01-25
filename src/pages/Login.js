@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
       color: "white",
       margin: theme.spacing(1),
       width: theme.spacing(60),
-      height: theme.spacing(70),
+      height: theme.spacing(50),
       position: "absolute",
       left: "50%",
       top: "50%",
@@ -24,9 +24,6 @@ const useStyles = makeStyles(theme => ({
       width: 300
     }
   },
-  input: {
-    color: "white"
-  }
 }));
 
 function Login() {
@@ -35,29 +32,27 @@ function Login() {
     <div className="Login">
       <div className={classes.root}>
         <Paper elevation={3}>
-          <h2>Login</h2>
-          <form noValidate autoComplete="off" className="classes.">
+          <br />
+          <h2>Employee login</h2>
+          <form noValidate autoComplete="off" className="InputForm">
             <TextField
               required
-              id="outlined-required"
-              label="Required"
+              id="outlined"
+              label="Username"
               defaultValue=""
               variant="outlined"
-              InputProps={{ className: classes.input }}
-              color="secondary"
             />
             <TextField
+              required
               id="outlined-password-input"
               label="Password"
               type="password"
               autoComplete="current-password"
               variant="outlined"
-              InputProps={{ className: classes.input }}
-              color="secondary"
             />
           </form>
           <p>
-            Don't have an account? <a href="/register">Register here</a>
+            To recover a password contact the system administrator.
           </p>
         </Paper>
       </div>

@@ -33,7 +33,7 @@ export default function NavBar() {
             ATS System
           </Typography>
           <Button color="inherit" href="/login">Login</Button>
-          <Button color="inherit" href="/register">Register</Button>
+          <Button color="inherit" href="/">Home</Button>
         </Toolbar>
       </AppBar>
     </div>

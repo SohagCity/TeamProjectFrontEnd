@@ -22,14 +22,3 @@ html, body{
 a {
   color: #61dafb;
 }
-
-@media (min-width: 320px) and (max-width: 480px) {
-
-  h2 {
-    font-size: 4vw;
-  }
-  p {
-    font-size: 4vw;
-  }
-
-}
