@@ -3,6 +3,7 @@ import "../App.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -51,6 +52,7 @@ function Login() {
               variant="outlined"
             />
           </form>
+          <Button variant="outlined">Log in</Button>
           <p>
             To recover a password contact the system administrator.
           </p>
