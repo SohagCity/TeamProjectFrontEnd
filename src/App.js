@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import NavBar from './components/NavBar';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import PaymentTest from './pages/PaymentTest'
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
         <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/payment" component={PaymentTest} />
         </Switch>
       </div>
     </Router>

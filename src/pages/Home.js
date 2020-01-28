@@ -1,10 +1,10 @@
 import React from 'react';
-import '../App.css';
+import '../App.scss';
 
 
 function Home() {
   return(
-    <div className="App">
+    <div className="PaymentForm">
         <h2>Welcome to the ATS System for "Company name here"</h2>
         <br/>
         <h3>
