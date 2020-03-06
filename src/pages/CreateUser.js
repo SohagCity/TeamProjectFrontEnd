@@ -8,13 +8,13 @@ import Select from "@material-ui/core/Select";
 import { withStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
+import { Box } from "@material-ui/core";
 
 const useStyles = theme => ({
   root: {
     "& .MuiTextField-root": {
-      margin: theme.spacing(2),
-      width: 300,
-      marginTop: theme.spacing(3)
+      margin: theme.spacing(1),
+      width: 300
     }
   },
   formControl: {
@@ -62,6 +62,7 @@ class CreateUser extends Component {
       role: this.state.role
     };
     console.log(user);
+    window.location = "/CreateUser"; //TODO
   };
 
   render() {
@@ -128,13 +129,17 @@ class CreateUser extends Component {
                   onChange={this.onChangePassword}
                 />
               </div>
-              <Button
-                type="submit"
-                variant="outlined"
-                className="btn btn-primary"
-              >
-                Create User
-              </Button>
+              <Box m={1}>
+                <Button
+                  variant="contained"
+                  type="submit"
+                  color="primary"
+                  className="btn btn-primary"
+                >
+                  Create User
+                </Button>
+              </Box>
+              <br />
             </form>
           </Paper>
         </div>
