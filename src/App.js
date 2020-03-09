@@ -6,12 +6,12 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import PaymentTest from "./pages/PaymentTest";
 import CreateUser from "./pages/CreateUser";
-import CreateBlank from "./pages/blanks/CreateBlank";
-import AssignBlank from "./pages/blanks/AssignBlank";
+import CreateBlank from "./pages/notUsed/CreateBlank";
+import AssignBlank from "./pages/notUsed/AssignBlank";
 import ReportSale from "./pages/ReportSale";
-import DeleteBlank from "./pages/blanks/DeleteBlank";
+import DeleteBlank from "./pages/notUsed/DeleteBlank";
 import BackupSettings from "./pages/BackupSettings";
-import ViewBlanks from "./pages/blanks/ViewBlanks";
+import ViewBlanks from "./pages/notUsed/ViewBlanks";
 import Blanks from "./pages/Blanks";
 import Customers from "./pages/Customers";
 
