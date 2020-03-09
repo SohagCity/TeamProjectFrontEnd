@@ -6,8 +6,14 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import PaymentTest from "./pages/PaymentTest";
 import CreateUser from "./pages/CreateUser";
-import CreateBlank from "./pages/CreateBlank";
-import AssignBlank from "./pages/AssignBlank";
+import CreateBlank from "./pages/blanks/CreateBlank";
+import AssignBlank from "./pages/blanks/AssignBlank";
+import ReportSale from "./pages/ReportSale";
+import DeleteBlank from "./pages/blanks/DeleteBlank";
+import BackupSettings from "./pages/BackupSettings";
+import ViewBlanks from "./pages/blanks/ViewBlanks";
+import Blanks from "./pages/Blanks";
+import Customers from "./pages/Customers";
 
 function App() {
   return (
@@ -21,6 +27,12 @@ function App() {
           <Route exact path="/createUser" component={CreateUser} />
           <Route exact path="/createBlank" component={CreateBlank} />
           <Route exact path="/assignBlank" component={AssignBlank} />
+          <Route exact path="/reportsale" component={ReportSale} />
+          <Route exact path="/deleteBlank" component={DeleteBlank} />
+          <Route exact path="/backupSettings" component={BackupSettings} />
+          <Route exact path="/viewBlanks" component={ViewBlanks} />
+          <Route exact path="/Blanks" component={Blanks} />
+          <Route exact path="/Customers" component={Customers} />
         </Switch>
       </div>
     </Router>

@@ -54,14 +54,34 @@ export default function NavBar() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <ListItem button component="a" href="/createUser" key={"createUser"}>
-          <ListItemText primary={"CreateUser"} />
+        <ListItem button component="a" href="/reportSale" key={"reportSale"}>
+          <ListItemText primary={"Report Sale"} />
         </ListItem>
-        <ListItem button component="a" href="/createBlank" key={"createBlank"}>
+
+        <Divider />
+        <ListItem button component="a" href="/blanks" key={"blanks"}>
+          <ListItemText primary={"Blanks"} />
+        </ListItem>
+        {/*<ListItem button component="a" href="/createBlank" key={"createBlank"}>
           <ListItemText primary={"Add new Blank"} />
         </ListItem>
         <ListItem button component="a" href="/assignBlank" key={"assignBlank"}>
           <ListItemText primary={"Assign Blank"} />
+        </ListItem>
+        <ListItem button component="a" href="/deleteBlank" key={"deleteBlank"}>
+          <ListItemText primary={"Delete Blank"} />
+        </ListItem>*/}
+        <Divider />
+        <ListItem button component="a" href="/createUser" key={"createUser"}>
+          <ListItemText primary={"CreateUser"} />
+        </ListItem>
+        <ListItem
+          button
+          component="a"
+          href="/backupSettings"
+          key={"backupSettings"}
+        >
+          <ListItemText primary={"Backup Settings"} />
         </ListItem>
       </List>
       <Divider />

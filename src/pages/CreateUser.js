@@ -62,7 +62,7 @@ class CreateUser extends Component {
       role: this.state.role
     };
     console.log(user);
-    window.location = "/CreateUser"; //TODO
+    window.location = "/"; //TODO
   };
 
   render() {
