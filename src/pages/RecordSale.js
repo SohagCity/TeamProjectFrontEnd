@@ -6,41 +6,33 @@ import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
 import { withStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
-import { Box, TextField } from "@material-ui/core";
+import { Box, TextField, InputLabel } from "@material-ui/core";
 
 const useStyles = theme => ({
   root: {
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: 300
+      width: 185
     }
   },
-  label: {
-    margin: theme.spacing(2),
-    position: "relative",
-    top: 30
-  },
   formControl: {
-    margin: theme.spacing(1)
-  },
-  advisor: {
     margin: theme.spacing(1),
-    width: 390
+    minWidth: 300
   },
-  button: {
-    margin: theme.spacing(2),
-    width: 390
+  currency: {
+    margin: theme.spacing(1),
+    minWidth: 100
   }
 });
 
-class ReportSale extends Component {
+class RecordSale extends Component {
   state = {
     avalibeBlanks: ["44400000000", "4441111111"], //TODO: get from database
     blank: "44400000000",
     currencies: ["USD", "EUR", "GBP"], //TODO: get from database
     currency: "USD",
     price: "",
-    paymentMethods: ["card", "cash"],
+    paymentMethods: ["card", "cash", "pay later"],
     paymentMethod: "card",
     customers: [
       { name: "", discountType: "", discountAmount: "0" },
@@ -49,7 +41,8 @@ class ReportSale extends Component {
       { name: "Customer3", discountType: "fixed", discountAmount: "20" }
     ],
     customer: { name: "", discountType: "", discountAmount: "0" }, //ASSUMING THAT SYSTEM WILL CALCULATE DISCOUNT AUTOMATICALLY
-    total: ""
+    total: "",
+    date: new Date()
   };
 
   onChangeCurrency = e => {
@@ -102,7 +95,7 @@ class ReportSale extends Component {
       customer: this.state.customer
     };
     console.log(sale);
-    //window.location = "/";
+    window.location = "/";
   };
 
   render() {
@@ -111,7 +104,7 @@ class ReportSale extends Component {
       <div className={classes.root}>
         <Paper elevation={1}>
           <br />
-          <h2>Report Sale</h2>
+          <h2>Record Sale</h2>
           <form
             noValidate
             autoComplete="off"
@@ -119,10 +112,11 @@ class ReportSale extends Component {
             onSubmit={this.onSubmit}
           >
             <div>
-              <label className={classes.label}>Blank:</label>
               <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel>Blank</InputLabel>
                 <Select
                   id="BlankSelect"
+                  label="Blank"
                   value={this.state.blank}
                   onChange={this.onChangeBlank}
                 >
@@ -138,10 +132,11 @@ class ReportSale extends Component {
             </div>
 
             <div>
-              <label className={classes.label}>Price:</label>
-              <FormControl variant="outlined" className={classes.formControl}>
+              <FormControl variant="outlined" className={classes.currency}>
+                <InputLabel>Currency</InputLabel>
                 <Select
-                  id="Price"
+                  id="Currency"
+                  label="Currency"
                   value={this.state.currency}
                   onChange={this.onChangeCurrency}
                 >
@@ -156,6 +151,8 @@ class ReportSale extends Component {
               </FormControl>
               <TextField
                 required
+                className={classes.amount}
+                label="Amount"
                 onInput={e => {
                   e.target.value = e.target.value.replace(/[^0-9]/g, "");
                 }}
@@ -171,10 +168,11 @@ class ReportSale extends Component {
             </div>
 
             <div>
-              <label className={classes.label}>Payment Method:</label>
               <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel>Payment Method</InputLabel>
                 <Select
                   id="AdvisorSelect"
+                  label="Payment Method"
                   value={this.state.paymentMethod}
                   onChange={this.onChangePaymentMethod}
                 >
@@ -190,10 +188,11 @@ class ReportSale extends Component {
             </div>
 
             <div>
-              <label className={classes.label}>Customer:</label>
               <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel>Customer</InputLabel>
                 <Select
                   id="AdvisorSelect"
+                  label="Customer"
                   value={this.state.customer}
                   onChange={this.onChangeCustomer}
                 >
@@ -210,6 +209,15 @@ class ReportSale extends Component {
                 </Select>
               </FormControl>
             </div>
+            <TextField
+              required
+              type="date"
+              className={classes.formControl}
+              id="outlined"
+              defaultValue={this.state.date}
+              variant="outlined"
+              onChange={date => this.setState(date)}
+            ></TextField>
             <Box m={1}>
               <Button
                 variant="contained"
@@ -217,9 +225,10 @@ class ReportSale extends Component {
                 color="primary"
                 className="btn btn-primary"
               >
-                Report
+                Record
               </Button>
             </Box>
+
             <br />
           </form>
         </Paper>
@@ -228,4 +237,4 @@ class ReportSale extends Component {
   }
 }
 
-export default withStyles(useStyles, { withTheme: true })(ReportSale);
+export default withStyles(useStyles, { withTheme: true })(RecordSale);

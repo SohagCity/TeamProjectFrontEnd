@@ -3,7 +3,7 @@ import "../App.scss";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(3),
       width: 300
     }
-  },
+  }
 }));
 
 function Login() {
@@ -53,9 +53,7 @@ function Login() {
             />
           </form>
           <Button variant="outlined">Log in</Button>
-          <p>
-            To recover a password contact the system administrator.
-          </p>
+          <p>To recover a password contact the system administrator.</p>
         </Paper>
       </div>
     </div>

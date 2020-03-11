@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
@@ -54,27 +53,27 @@ export default function NavBar() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <ListItem button component="a" href="/reportSale" key={"reportSale"}>
-          <ListItemText primary={"Report Sale"} />
+        <ListItem button component="a" href="/recordSale" key={"recordSale"}>
+          <ListItemText primary={"Record Sale"} />
         </ListItem>
 
         <Divider />
         <ListItem button component="a" href="/blanks" key={"blanks"}>
           <ListItemText primary={"Blanks"} />
         </ListItem>
-        {/*<ListItem button component="a" href="/createBlank" key={"createBlank"}>
-          <ListItemText primary={"Add new Blank"} />
-        </ListItem>
-        <ListItem button component="a" href="/assignBlank" key={"assignBlank"}>
-          <ListItemText primary={"Assign Blank"} />
-        </ListItem>
-        <ListItem button component="a" href="/deleteBlank" key={"deleteBlank"}>
-          <ListItemText primary={"Delete Blank"} />
-        </ListItem>*/}
         <Divider />
-        <ListItem button component="a" href="/createUser" key={"createUser"}>
-          <ListItemText primary={"CreateUser"} />
+        <ListItem button component="a" href="/tickets" key={"Tickets"}>
+          <ListItemText primary={"Tickets"} />
         </ListItem>
+        <Divider />
+        <ListItem button component="a" href="/customers" key={"customers"}>
+          <ListItemText primary={"Customers"} />
+        </ListItem>
+        <Divider />
+        <ListItem button component="a" href="/users" key={"Users"}>
+          <ListItemText primary={"Users"} />
+        </ListItem>
+        <Divider />
         <ListItem
           button
           component="a"

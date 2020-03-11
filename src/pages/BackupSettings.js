@@ -47,6 +47,9 @@ class BackupSettings extends Component {
     console.log(backup);
     window.location = "/";
   };
+  onRestore = e => {
+    console.log("restore");
+  };
 
   render() {
     const { classes } = this.props;
@@ -81,9 +84,9 @@ class BackupSettings extends Component {
               <ButtonGroup className={classes.button}>
                 <Button
                   variant="contained"
-                  type="submit"
                   color="primary"
                   className="btn btn-primary"
+                  onClick={this.onRestore}
                 >
                   Restore System
                 </Button>
