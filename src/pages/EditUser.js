@@ -28,18 +28,21 @@ class EditUser extends Component {
     super(props);
 
     this.state = {
-      username: "",
+      username: this.props.match.params.id,
       password: "",
       name: "",
-      roles: [{ 1: "Advisor", 2: "OfficeManager", 3: "Admin" }],
-      role: ""
+      roles: ["Advisor", "OfficeManager", "Admin"],
+      role: "",
+      errors: {
+        username: ""
+      }
     };
   }
-
-  componentWillMount() {
-    this.setState({ username: this.props.match.params.id });
-  }
-
+  validateForm = errors => {
+    let valid = true;
+    Object.values(errors).forEach(val => val.length > 0 && (valid = false));
+    return valid;
+  };
   onChangeUserName = e => {
     this.setState({
       username: e.target.value
@@ -62,15 +65,20 @@ class EditUser extends Component {
   };
   onSubmit = e => {
     e.preventDefault();
-
-    const user = {
-      username: this.state.username,
-      password: this.state.password,
-      name: this.state.name,
-      role: this.state.role
-    };
-    console.log(user);
-    window.location = "/staff"; //TODO
+    let errors = this.state.errors;
+    errors.username =
+      this.state.username === "" ? "Please insert a username " : "";
+    this.setState({ errors });
+    if (this.validateForm(this.state.errors)) {
+      const user = {
+        username: this.state.username,
+        password: this.state.password,
+        name: this.state.name,
+        role: this.state.role
+      };
+      console.log(user);
+    }
+    //window.location = "/users";
   };
 
   render() {
@@ -90,17 +98,19 @@ class EditUser extends Component {
               <div>
                 <TextField
                   required
-                  id="outlined"
+                  id="username"
                   label="Username"
                   defaultValue={this.state.username}
                   variant="outlined"
                   onChange={this.onChangeUserName}
                 />
               </div>
+              {this.state.errors.username.length > 0 && (
+                <span className="error">{this.state.errors.username}</span>
+              )}
               <div>
                 <TextField
-                  required
-                  id="outlined"
+                  id="name"
                   label="Name"
                   defaultValue={this.state.name}
                   variant="outlined"
@@ -128,8 +138,7 @@ class EditUser extends Component {
               </div>
               <div>
                 <TextField
-                  required
-                  id="outlined-password-input"
+                  id="password"
                   label="Password"
                   type="password"
                   autoComplete="current-password"
@@ -144,7 +153,7 @@ class EditUser extends Component {
                   color="primary"
                   className="btn btn-primary"
                 >
-                  Create User
+                  Edit User
                 </Button>
               </Box>
               <br />

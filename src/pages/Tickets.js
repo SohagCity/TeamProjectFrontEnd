@@ -8,10 +8,8 @@ class Tickets extends React.Component {
       columns: [
         { title: "Ticket Id", field: "blankId" },
         { title: "Sold To", field: "customer" },
-        {
-          title: "Price ($)",
-          field: "price"
-        },
+        { title: "Price ($)", field: "price" },
+        { title: "Commission rate (%)", field: "commission" },
         { title: "Payment Method", field: "method" },
         { title: "Date of Sale", field: "date", type: "date" }
       ],
@@ -21,21 +19,24 @@ class Tickets extends React.Component {
           customer: "Luigi",
           price: "100",
           method: "card",
-          date: new Date()
+          date: new Date(),
+          commission: "16"
         },
         {
           blankId: "444111111",
           customer: "Mario",
           price: "100",
           method: "cash",
-          date: new Date()
+          date: new Date(),
+          commission: "16"
         },
         {
           blankId: "222222222",
           customer: "Wario",
           price: "100",
           method: "pay later",
-          date: new Date()
+          date: new Date(),
+          commission: "20"
         }
       ]
     };

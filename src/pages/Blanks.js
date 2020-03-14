@@ -9,7 +9,8 @@ class Blanks extends React.Component {
     this.state = {
       columns: [
         { title: "Blank Id", field: "blankId" },
-        { title: "Blank Type", field: "blankType" },
+        { title: "Blank Type", field: "blankType", editable: "never" },
+        { title: "Coupons", field: "coupons", editable: "never" },
         { title: "Assigned To", field: "assigned" },
         { title: "Status", field: "status" }
       ],
@@ -18,19 +19,22 @@ class Blanks extends React.Component {
           blankId: "444000000",
           assigned: "Luigi",
           status: "sold",
-          blankType: "lol"
+          blankType: "",
+          coupons: ""
         },
         {
           blankId: "444111111",
           assigned: "Mario",
           status: "valid",
-          blankType: ""
+          blankType: "",
+          coupons: ""
         },
         {
           blankId: "222222222",
           assigned: "Wario",
           status: "void",
-          blankType: ""
+          blankType: "",
+          coupons: ""
         }
       ]
     };
@@ -41,19 +45,60 @@ class Blanks extends React.Component {
     data.forEach(blank => {
       const id = blank.blankId.substring(0, 3);
       let type = "";
-      if (id === "444") type = "interline";
-      else if (id === "440") type = "interline manual";
-      else if (id === "420") type = "interline (2 coupons)";
-      else if (id === "201") type = "domestic (2 coupons)";
-      else if (id === "101") type = "domestic (1 coupons)";
-      data.find(element => element === blank).blankType = type;
+      let coupons = "";
+      if (id === "444") {
+        type = "interline";
+        coupons = "4";
+      } else if (id === "440") {
+        type = "interline manual";
+        coupons = "4";
+      } else if (id === "420") {
+        type = "interline";
+        coupons = "2";
+      } else if (id === "201") {
+        type = "domestic";
+        coupons = "2";
+      } else if (id === "101") {
+        type = "domestic";
+        coupons = "1";
+      } else if (id === "451") {
+        type = "MCO";
+      } else if (id === "452") {
+        type = "MCO";
+      }
+      let e = data.find(element => element === blank);
+      e.blankType = type;
+      e.coupons = coupons;
       this.setState({
-        data: data
+        data
       });
-      console.log(this.state.data);
     });
   }
-
+  BlankTypeCoupons = (name, id) => {
+    let type = "";
+    let coupons = "";
+    if (id === "444") {
+      type = "interline";
+      coupons = "4";
+    } else if (id === "440") {
+      type = "interline manual";
+      coupons = "4";
+    } else if (id === "420") {
+      type = "interline";
+      coupons = "2";
+    } else if (id === "201") {
+      type = "domestic";
+      coupons = "2";
+    } else if (id === "101") {
+      type = "domestic";
+      coupons = "1";
+    } else if (id === "451") {
+      type = "MCO";
+    } else if (id === "452") {
+      type = "MCO";
+    }
+    return name === "coupons" ? coupons : type;
+  };
   returnBlank = (event, rowData) => {
     new Promise(resolve => {
       setTimeout(() => {
@@ -116,11 +161,13 @@ class Blanks extends React.Component {
               new Promise(resolve => {
                 setTimeout(() => {
                   resolve();
+
                   this.setState(prevState => {
                     const data = [...prevState.data];
                     data.push(newData);
                     return { ...prevState, data };
                   });
+                  this.componentWillMount();
                 }, 600);
               }),
             onRowUpdate: (newData, oldData) =>
@@ -133,6 +180,7 @@ class Blanks extends React.Component {
                       data[data.indexOf(oldData)] = newData;
                       return { ...prevState, data };
                     });
+                    this.componentWillMount();
                   }
                 }, 600);
               }),

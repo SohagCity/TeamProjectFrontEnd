@@ -1,19 +1,19 @@
-html, body{
+html,
+body {
   background-color: #bfbfbf;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 .App {
   text-align: center;
   color: white;
 }
 
-.PaymentForm{
+.PaymentForm {
   display: flex;
   flex-direction: column;
-    .Form{
-      flex-direction: row;
-
-    }
+  .Form {
+    flex-direction: row;
+  }
 }
 
 .App-header {
@@ -30,4 +30,10 @@ html, body{
 
 a {
   color: #61dafb;
+}
+
+.error {
+  color: #db2269;
+  font-size: 0.625em;
+  display: relative;
 }

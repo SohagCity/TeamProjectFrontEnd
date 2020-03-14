@@ -30,19 +30,30 @@ class RecordSale extends Component {
     avalibeBlanks: ["44400000000", "4441111111"], //TODO: get from database
     blank: "44400000000",
     currencies: ["USD", "EUR", "GBP"], //TODO: get from database
-    currency: "USD",
+    currency: "",
     price: "",
     paymentMethods: ["card", "cash", "pay later"],
     paymentMethod: "card",
+    commission: 0,
     customers: [
       { name: "", discountType: "", discountAmount: "0" },
       { name: "Customer1", discountType: "flexible", discountAmount: "100,20" }, //100 being the requiered amount need to apply the disocunt and 20 the %
       { name: "Customer2", discountType: "fixed", discountAmount: "10" },
       { name: "Customer3", discountType: "fixed", discountAmount: "20" }
     ],
-    customer: { name: "", discountType: "", discountAmount: "0" }, //ASSUMING THAT SYSTEM WILL CALCULATE DISCOUNT AUTOMATICALLY
+    customer: "" /*{ name: "", discountType: "", discountAmount: "0" }*/, //ASSUMING THAT SYSTEM WILL CALCULATE DISCOUNT AUTOMATICALLY
     total: "",
-    date: new Date()
+    date: "",
+    errors: {
+      price: "",
+      currency: "",
+      date: ""
+    }
+  };
+  validateForm = errors => {
+    let valid = true;
+    Object.values(errors).forEach(val => val.length > 0 && (valid = false));
+    return valid;
   };
 
   onChangeCurrency = e => {
@@ -52,6 +63,12 @@ class RecordSale extends Component {
   };
 
   onChangePrice = e => {
+    let errors = this.state.errors;
+    errors.price = e.target.value < 1 ? "Please insert a value" : "";
+
+    this.setState({
+      errors
+    });
     this.setState({
       price: e.target.value
     });
@@ -77,6 +94,14 @@ class RecordSale extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    let errors = this.state.errors;
+    errors.currency =
+      this.state.currency === "" ? "Please insert a currency " : "";
+    errors.date = this.state.date === "" ? "Please insert a date " : "";
+    this.setState({
+      errors
+    });
+
     let price = parseFloat(this.state.price);
     if (this.state.customer.discountType === "fixed") {
       price =
@@ -87,18 +112,23 @@ class RecordSale extends Component {
         price = price - (price / 100) * parseFloat(required[1]);
       }
     }
-    const sale = {
-      blank: this.state.blank,
-      price,
-      currency: this.state.currency,
-      paymentMethod: this.state.paymentMethod,
-      customer: this.state.customer
-    };
-    console.log(sale);
-    window.location = "/";
+    if (this.validateForm(this.state.errors)) {
+      const sale = {
+        blank: this.state.blank,
+        price,
+        currency: this.state.currency,
+        paymentMethod: this.state.paymentMethod,
+        customer: this.state.customer,
+        date: this.state.date,
+        commission: this.state.commission
+      };
+      console.log(sale);
+    }
+    //window.location = "/recordSale";
   };
 
   render() {
+    const { errors } = this.state;
     const { classes } = this.props;
     return (
       <div className={classes.root}>
@@ -166,7 +196,24 @@ class RecordSale extends Component {
                 onChange={this.onChangePrice}
               />
             </div>
-
+            {errors.currency.length > 0 && (
+              <span className="error">{errors.currency}</span>
+            )}
+            {errors.price.length > 0 && (
+              <span className="error">{errors.price}</span>
+            )}
+            <div>
+              <TextField
+                required
+                className={classes.formControl}
+                label="Commission"
+                id="outlined"
+                type="number"
+                defaultValue={this.state.commission}
+                variant="outlined"
+                onChange={this.onChangePrice}
+              ></TextField>
+            </div>
             <div>
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel>Payment Method</InputLabel>
@@ -218,6 +265,11 @@ class RecordSale extends Component {
               variant="outlined"
               onChange={date => this.setState(date)}
             ></TextField>
+            <div>
+              {errors.date.length > 0 && (
+                <span className="error">{errors.date}</span>
+              )}
+            </div>
             <Box m={1}>
               <Button
                 variant="contained"
