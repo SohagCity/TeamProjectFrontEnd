@@ -6,17 +6,17 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import PaymentTest from "./pages/PaymentTest";
 import CreateUser from "./pages/CreateUser";
-import CreateBlank from "./pages/notUsed/CreateBlank";
-import AssignBlank from "./pages/notUsed/AssignBlank";
 import RecordSale from "./pages/RecordSale";
-import DeleteBlank from "./pages/notUsed/DeleteBlank";
 import BackupSettings from "./pages/BackupSettings";
-import ViewBlanks from "./pages/notUsed/ViewBlanks";
 import Blanks from "./pages/Blanks";
 import Customers from "./pages/Customers";
 import Users from "./pages/Users";
 import EditUser from "./pages/EditUser";
 import Tickets from "./pages/Tickets";
+import TravelAgents from "./pages/TravelAgents";
+import Currencies from "./pages/Currencies";
+import Commissions from "./pages/Commissions";
+import Discounts from "./pages/Discounts";
 
 function App() {
   return (
@@ -27,18 +27,18 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/payment" component={PaymentTest} />
-          <Route exact path="/createUser" component={CreateUser} />
-          <Route exact path="/createBlank" component={CreateBlank} />
-          <Route exact path="/assignBlank" component={AssignBlank} />
+          <Route exact path="/users/add" component={CreateUser} />
           <Route exact path="/recordSale" component={RecordSale} />
-          <Route exact path="/deleteBlank" component={DeleteBlank} />
           <Route exact path="/backupSettings" component={BackupSettings} />
-          <Route exact path="/viewBlanks" component={ViewBlanks} />
           <Route exact path="/blanks" component={Blanks} />
           <Route exact path="/customers" component={Customers} />
           <Route exact path="/users" component={Users} />
-          <Route exact path="/editUser/:id" component={EditUser} />
+          <Route exact path="/users/edit/:id" component={EditUser} />
           <Route exact path="/tickets" component={Tickets} />
+          <Route exact path="/travelAgents" component={TravelAgents} />
+          <Route exact path="/currencies" component={Currencies} />
+          <Route exact path="/commissions" component={Commissions} />
+          <Route exact path="/discounts" component={Discounts} />
         </Switch>
       </div>
     </Router>

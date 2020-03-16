@@ -58,11 +58,29 @@ export default function NavBar() {
         </ListItem>
 
         <Divider />
+        <ListItem
+          button
+          component="a"
+          href="/travelAgents"
+          key={"travelAgents"}
+        >
+          <ListItemText primary={"Travel Agents"} />
+        </ListItem>
+
+        <Divider />
         <ListItem button component="a" href="/blanks" key={"blanks"}>
           <ListItemText primary={"Blanks"} />
         </ListItem>
         <Divider />
-        <ListItem button component="a" href="/tickets" key={"Tickets"}>
+        <ListItem button component="a" href="/currencies" key={"currencies"}>
+          <ListItemText primary={"Currencies"} />
+        </ListItem>
+        <Divider />
+        <ListItem button component="a" href="/commissions" key={"commissions"}>
+          <ListItemText primary={"Commissions"} />
+        </ListItem>
+        <Divider />
+        <ListItem button component="a" href="/tickets" key={"tickets"}>
           <ListItemText primary={"Tickets"} />
         </ListItem>
         <Divider />
@@ -101,7 +119,7 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            ATS System
+            AirVia
           </Typography>
           <Button color="inherit" href="/login">
             Login

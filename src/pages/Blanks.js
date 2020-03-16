@@ -74,31 +74,7 @@ class Blanks extends React.Component {
       });
     });
   }
-  BlankTypeCoupons = (name, id) => {
-    let type = "";
-    let coupons = "";
-    if (id === "444") {
-      type = "interline";
-      coupons = "4";
-    } else if (id === "440") {
-      type = "interline manual";
-      coupons = "4";
-    } else if (id === "420") {
-      type = "interline";
-      coupons = "2";
-    } else if (id === "201") {
-      type = "domestic";
-      coupons = "2";
-    } else if (id === "101") {
-      type = "domestic";
-      coupons = "1";
-    } else if (id === "451") {
-      type = "MCO";
-    } else if (id === "452") {
-      type = "MCO";
-    }
-    return name === "coupons" ? coupons : type;
-  };
+
   returnBlank = (event, rowData) => {
     new Promise(resolve => {
       setTimeout(() => {

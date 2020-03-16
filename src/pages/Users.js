@@ -1,14 +1,6 @@
 import React from "react";
 import MaterialTable from "material-table";
 
-/*
-npm uninstall react-modal
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import ChangePassword from "../components/ChangePassword";
-import ReactModal from "react-modal";
-import { TextField } from "@material-ui/core";
-*/
-
 class Users extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +8,7 @@ class Users extends React.Component {
       columns: [
         { title: "User Name", field: "userName" },
         { title: "Name", field: "name" },
+        { title: "Travel Agent", field: "agent" },
         {
           title: "Role",
           field: "role",
@@ -23,15 +16,28 @@ class Users extends React.Component {
         }
       ],
       data: [
-        { userName: "PussyDestroyer69", name: "Sam Sung", role: 1 },
-        { userName: "kiss-my-axe", name: "Saad Maan", role: 1 },
-        { userName: "hugs_for_drugs", name: "Moe Lester", role: 2 }
+        {
+          userName: "PussyDestroyer69",
+          name: "Sam Sung",
+          agent: "Travel Agent 1",
+          role: 1
+        },
+        {
+          userName: "kiss-my-axe",
+          name: "Saad Maan",
+          agent: "Travel Agent 1",
+          role: 1
+        },
+        {
+          userName: "hugs_for_drugs",
+          name: "Moe Lester",
+          agent: "Travel Agent 1",
+          role: 2
+        }
       ]
     };
   }
-  /*const handleCloseModal = () => {
-    setState({ showModal: false });
-  };*/
+
   render() {
     return (
       <div>
@@ -39,52 +45,21 @@ class Users extends React.Component {
           title="Users"
           columns={this.state.columns}
           data={this.state.data}
-          /*actions={[
-          {
-            icon: ArrowBackIcon,
-            tooltip: "return",
-            onClick: (event, rowData) => {
-               new Promise(resolve => {
-              setTimeout(() => {
-                resolve();
-                setState(prevState => {
-                  const data = [...prevState.data];
-                  data.find(element => element === rowData).status = "returned";
-                  return { ...prevState, data };
-                });
-              }, 600);
-            });
-              setState({ showModal: true });
-            }
-          }
-        ]}*/
           actions={[
             {
               icon: "add",
               tooltip: "Add User",
               isFreeAction: true,
-              onClick: event => (window.location = "/createUser")
+              onClick: event => (window.location = "/users/add")
             },
             {
               icon: "edit",
               tooltip: "Edit",
               onClick: (event, rowData) =>
-                (window.location = "/editUser/" + rowData.userName)
+                (window.location = "/users/edit/" + rowData.userName)
             }
           ]}
           editable={{
-            /*onRowUpdate: (newData, oldData) =>
-              new Promise((resolve, reject) => {
-                setTimeout(() => {
-                  {
-                    const data = this.state.data;
-                    const index = data.indexOf(oldData);
-                    data[index] = newData;
-                    this.setState({ data }, () => resolve());
-                  }
-                  resolve();
-                }, 1000);
-              }),*/
             onRowDelete: oldData =>
               new Promise((resolve, reject) => {
                 setTimeout(() => {
@@ -99,11 +74,6 @@ class Users extends React.Component {
               })
           }}
         />
-
-        {/*<ReactModal isOpen={state.showModal} contentLabel="Minimal Modal Example">
-        <TextField></TextField>
-        <button onClick={handleCloseModal}>Close Modal</button>
-    </ReactModal>*/}
       </div>
     );
   }

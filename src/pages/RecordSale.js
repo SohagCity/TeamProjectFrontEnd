@@ -7,6 +7,7 @@ import Select from "@material-ui/core/Select";
 import { withStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import { Box, TextField, InputLabel } from "@material-ui/core";
+import PaymentForm from "../components/PaymentForm";
 
 const useStyles = theme => ({
   root: {
@@ -27,14 +28,13 @@ const useStyles = theme => ({
 
 class RecordSale extends Component {
   state = {
-    avalibeBlanks: ["44400000000", "4441111111"], //TODO: get from database
+    avalibeBlanks: ["44400000000", "4441111111"],
     blank: "44400000000",
-    currencies: ["USD", "EUR", "GBP"], //TODO: get from database
+    currencies: ["USD", "EUR", "GBP"],
     currency: "",
     price: "",
     paymentMethods: ["card", "cash", "pay later"],
-    paymentMethod: "card",
-    commission: 0,
+    paymentMethod: "cash",
     customers: [
       { name: "", discountType: "", discountAmount: "0" },
       { name: "Customer1", discountType: "flexible", discountAmount: "100,20" }, //100 being the requiered amount need to apply the disocunt and 20 the %
@@ -91,7 +91,6 @@ class RecordSale extends Component {
       blank: e.target.value
     });
   };
-
   onSubmit = e => {
     e.preventDefault();
     let errors = this.state.errors;
@@ -119,8 +118,7 @@ class RecordSale extends Component {
         currency: this.state.currency,
         paymentMethod: this.state.paymentMethod,
         customer: this.state.customer,
-        date: this.state.date,
-        commission: this.state.commission
+        date: this.state.date
       };
       console.log(sale);
     }
@@ -203,38 +201,6 @@ class RecordSale extends Component {
               <span className="error">{errors.price}</span>
             )}
             <div>
-              <TextField
-                required
-                className={classes.formControl}
-                label="Commission"
-                id="outlined"
-                type="number"
-                defaultValue={this.state.commission}
-                variant="outlined"
-                onChange={this.onChangePrice}
-              ></TextField>
-            </div>
-            <div>
-              <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel>Payment Method</InputLabel>
-                <Select
-                  id="AdvisorSelect"
-                  label="Payment Method"
-                  value={this.state.paymentMethod}
-                  onChange={this.onChangePaymentMethod}
-                >
-                  {this.state.paymentMethods.map(function(paymentMethod) {
-                    return (
-                      <MenuItem key={paymentMethod} value={paymentMethod}>
-                        {paymentMethod}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              </FormControl>
-            </div>
-
-            <div>
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel>Customer</InputLabel>
                 <Select
@@ -256,14 +222,35 @@ class RecordSale extends Component {
                 </Select>
               </FormControl>
             </div>
+            <div>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel>Payment Method</InputLabel>
+                <Select
+                  id="AdvisorSelect"
+                  label="Payment Method"
+                  value={this.state.paymentMethod}
+                  onChange={this.onChangePaymentMethod}
+                >
+                  {this.state.paymentMethods.map(function(paymentMethod) {
+                    return (
+                      <MenuItem key={paymentMethod} value={paymentMethod}>
+                        {paymentMethod}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
+              {this.state.paymentMethod === "card" && (
+                <PaymentForm></PaymentForm>
+              )}
+            </div>
             <TextField
               required
               type="date"
               className={classes.formControl}
-              id="outlined"
+              id="date"
               defaultValue={this.state.date}
               variant="outlined"
-              onChange={date => this.setState(date)}
             ></TextField>
             <div>
               {errors.date.length > 0 && (

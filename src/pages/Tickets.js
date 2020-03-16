@@ -11,6 +11,7 @@ class Tickets extends React.Component {
         { title: "Price ($)", field: "price" },
         { title: "Commission rate (%)", field: "commission" },
         { title: "Payment Method", field: "method" },
+        { title: "Payment Details", field: "details" }, //CARD NUMBER or PAY LATER DAYS LEFT
         { title: "Date of Sale", field: "date", type: "date" }
       ],
       data: [

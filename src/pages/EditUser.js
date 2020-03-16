@@ -33,6 +33,8 @@ class EditUser extends Component {
       name: "",
       roles: ["Advisor", "OfficeManager", "Admin"],
       role: "",
+      agents: ["Travel Agent 1", "Travel Agent 2", "Travel Agent 3"],
+      agent: "",
       errors: {
         username: ""
       }
@@ -56,6 +58,11 @@ class EditUser extends Component {
   onChangeName = e => {
     this.setState({
       name: e.target.value
+    });
+  };
+  onChangeAgent = e => {
+    this.setState({
+      agent: e.target.value
     });
   };
   onChangeRole = e => {
@@ -108,6 +115,25 @@ class EditUser extends Component {
               {this.state.errors.username.length > 0 && (
                 <span className="error">{this.state.errors.username}</span>
               )}
+              <div>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel>Travel Agent</InputLabel>
+                  <Select
+                    label="Travel Agent"
+                    id="TravelAgent"
+                    value={this.state.role}
+                    onChange={this.onChangeAgent}
+                  >
+                    {this.state.agents.map(function(agent) {
+                      return (
+                        <MenuItem key={agent} value={agent}>
+                          {agent}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </div>
               <div>
                 <TextField
                   id="name"
