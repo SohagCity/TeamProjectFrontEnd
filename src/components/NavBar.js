@@ -57,7 +57,7 @@ class NavBar extends React.Component{
 
   // User Login
   formSubmit = () => {
-    Axios.post(`${APIURL}/login`, {
+    Axios.post(`${APIURL}/auth/login`, {
       username: this.state.username,
       password: this.state.password
     })
