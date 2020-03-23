@@ -17,8 +17,8 @@ class App extends React.Component {
 
     // if there is a token currently in local localStorage
     // get it and set state and props for other components to access
-    const JWT = localStorage.getItem('usertoken')
-    const parsed = JSON.parse(JWT)
+    let webtoken = localStorage.getItem('usertoken')
+    let parsed = JSON.parse(webtoken)
 
     if (authenticated()) {
       this.state.userLoggedIn = true
