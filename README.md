@@ -9,7 +9,7 @@ We have been asked to build from the bottom a fully functional system that will 
 
 ### Our solution
 
-We have chosen to create the system as a web app, based purely on React for the user interface, and Node & Express server-side, with MongoDB as our chosen database. There is a separate repository for backend to this project, which handles the server requests and database connection, and is available [here](https://github.com/PiotrRut/ATS-Backend).
+We have chosen to create the system as a web app, based purely on React for the user interface, and Node & Express server-side, with MongoDB as our chosen database. There is a separate repository for backend to this project, which handles the server requests and database connection, and is available [here](https://github.com/PiotrRut/ATSBackend).
 
 Since the project specification does not require the system to be working on mobile phones, there is no mobile and responsiveness optimisation to this web app.
 
