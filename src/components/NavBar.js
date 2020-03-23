@@ -54,19 +54,29 @@ class NavBar extends React.Component {
     this.setState({ sideMenuOpen: false });
   };
 
-  // User Login
+  // User authentication via the API url
   formSubmit = () => {
     Axios.post(`${APIURL}/auth/login`, {
       username: this.state.username,
       password: this.state.password
     })
       .then(response => {
-        window.location.reload();
+        // Store the token in local storage, under key 'usertoken'
+        localStorage.setItem('usertoken', JSON.stringify(response.data))
+        window.location.reload()
+        console.log()
       })
       .catch(error => {
         this.setState({ loginFailed: true });
       });
   };
+
+  // Logging out the user by deleting the token from local storage
+  userLogout = () => {
+    localStorage.removeItem('usertoken')
+    window.location.reload()
+    console.log()
+  }
 
   // The nav bar along with buttons
   render() {
@@ -84,13 +94,17 @@ class NavBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6">AirVia</Typography>
-            <Button
-              color="inherit"
-              style={{ position: "absolute", right: "1vw" }}
-              onClick={this.handleOpen}
-            >
-              Sign in
-            </Button>
+            {/* userLoggedIn defined in App.js - when true and a token
+              is currently stored within local storage, only the log out
+              option is available. Otherwise, users can log in
+            */}
+            {this.props.userLoggedIn
+            ? <Button color="inherit" style={{ position: "absolute", right: "1vw" }} onClick={this.userLogout}>
+                Sign out
+              </Button>
+            : <Button color="inherit" style={{ position: "absolute", right: "1vw" }} onClick={this.handleOpen}>
+                Sign in
+              </Button>}
             <Dialog
               open={this.state.open}
               onClose={this.handleClose}
