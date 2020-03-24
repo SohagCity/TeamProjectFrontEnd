@@ -1,4 +1,6 @@
 import React from "react";
+import axios from 'axios';
+import APIURL from "./misc/backend";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import authenticated from "./misc/userAuth";
@@ -13,17 +15,29 @@ class App extends React.Component {
     this.state = {
       usertoken: null,
       userLoggedIn: false,
+      userID: null,
+      userRole: null
     }
 
     // if there is a token currently in local localStorage
     // get it and set state and props for other components to access
     let webtoken = localStorage.getItem('usertoken')
-    let parsed = JSON.parse(webtoken)
-
+    let parsedToken = JSON.parse(webtoken)
     if (authenticated()) {
       this.state.userLoggedIn = true
-      this.state.usertoken = parsed.usertoken
+      this.state.usertoken = parsedToken.token
     }
+  }
+
+  // Load the user ID to query
+  async componentDidMount() {
+    await axios.get(
+      `${APIURL}/auth/profileInfo?secret_token=${this.state.usertoken}`)
+      .then(res => {
+        this.state.userID = res.data.user.username
+        this.state.userRole = res.data.user.role
+        console.log(res)
+      });
   }
 
   render () {
