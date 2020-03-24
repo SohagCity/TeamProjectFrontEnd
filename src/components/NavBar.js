@@ -24,7 +24,6 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentuser: null,
       username: "",
       password: "",
       open: false,
@@ -32,6 +31,7 @@ class NavBar extends React.Component {
       sideMenuOpen: false
     };
   }
+
 
   // Login dialog open and close actions
   handleOpen = () => {
@@ -93,6 +93,11 @@ class NavBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6">AirVia</Typography>
+            {this.props.userLoggedIn &&
+              <Typography variant="h6" style={{ position: "absolute", right: "43vw" }}>
+                Welcome, {this.props.staffName}
+              </Typography>
+            }
             {/* userLoggedIn defined in App.js - when true and a token
               is currently stored within local storage, only the log out
               option is available. Otherwise, users can log in

@@ -6,7 +6,7 @@ import "./App.scss";
 import authenticated from "./misc/userAuth";
 import NavBar from "./components/NavBar";
 import LandingPage from "./pages/LandingPage";
-import PaymentTest from "./pages/PaymentTest";
+import HomePage from "./pages/HomePage";
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +16,8 @@ class App extends React.Component {
       usertoken: null,
       userLoggedIn: false,
       userID: null,
-      userRole: null
+      userRole: null,
+      staffName: null
     }
 
     // if there is a token currently in local localStorage
@@ -34,23 +35,25 @@ class App extends React.Component {
     await axios.get(
       `${APIURL}/auth/profileInfo?secret_token=${this.state.usertoken}`)
       .then(res => {
-        this.state.userID = res.data.user.username
-        this.state.userRole = res.data.user.role
-        console.log(res)
+        this.setState({
+          userID: res.data.user.username,
+          userRole: res.data.user.role,
+          staffName: res.data.user.name
+        });
       });
   }
 
   render () {
     return (
       <Router>
-      {/* set the userLoggedIn inside NavBar component to the current state here*/}
-      <NavBar userLoggedIn={this.state.userLoggedIn}/>
-      <div className="App">
-        <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/payment" component={PaymentTest} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact={true} path='/' render={() => (
+          <div className="App">
+            <NavBar userLoggedIn={this.state.userLoggedIn} staffName={this.state.staffName}/>
+            {this.state.userLoggedIn ? <HomePage/> : <LandingPage/> }
+          </div>
+        )}/>
+      </Switch>
     </Router>
     )
   }
