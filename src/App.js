@@ -49,7 +49,10 @@ class App extends React.Component {
       <Switch>
         <Route exact={true} path='/' render={() => (
           <div className="App">
-            <NavBar userLoggedIn={this.state.userLoggedIn} staffName={this.state.staffName}/>
+            <NavBar userLoggedIn={this.state.userLoggedIn}
+               staffName={this.state.staffName}
+               staffRole={this.state.userRole}
+             />
             {this.state.userLoggedIn ? <HomePage/> : <LandingPage/> }
           </div>
         )}/>

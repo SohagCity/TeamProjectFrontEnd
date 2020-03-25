@@ -6,8 +6,9 @@ import TeamPic from '../assets/Teampic.png'
 function LandingPage() {
   return(
     <div>
+        <br/>
         <h1>Welcome to the ATS System for "AirVia"</h1>
-        <h1>Please sign in to get access</h1>
+        <h1>Please sign in to get access to your dashboard</h1>
         <br/> <br/>
         <h3> System brought to you by </h3>
         <img alt='Team 6ix' style={{ width: '200px' }} src={TeamPic}/>

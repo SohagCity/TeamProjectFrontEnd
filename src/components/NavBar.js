@@ -93,7 +93,8 @@ class NavBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6">AirVia</Typography>
-            {this.props.userLoggedIn &&
+            {
+              this.props.userLoggedIn &&
               <Typography variant="h6" style={{ position: "absolute", right: "43vw" }}>
                 Welcome, {this.props.staffName}
               </Typography>
@@ -102,13 +103,15 @@ class NavBar extends React.Component {
               is currently stored within local storage, only the log out
               option is available. Otherwise, users can log in
             */}
-            {this.props.userLoggedIn
-            ? <Button color="inherit" style={{ position: "absolute", right: "1vw" }} onClick={this.userLogout}>
-                Sign out
-              </Button>
-            : <Button color="inherit" style={{ position: "absolute", right: "1vw" }} onClick={this.handleOpen}>
-                Sign in
-              </Button>}
+            {
+              this.props.userLoggedIn
+              ? <Button color="inherit" style={{ position: "absolute", right: "1vw" }} onClick={this.userLogout}>
+                  Sign out
+                </Button>
+              : <Button color="inherit" style={{ position: "absolute", right: "1vw" }} onClick={this.handleOpen}>
+                  Sign in
+                </Button>
+            }
             <Dialog
               open={this.state.open}
               onClose={this.handleClose}
@@ -163,6 +166,12 @@ class NavBar extends React.Component {
               <a href="https://piotr-rutkowski.com">Piotr Rutkowski</a> and{" "}
               <a href="https://github.com/SohagCity">Sohag Miah</a>
             </p>
+            {
+              this.props.userLoggedIn &&
+              <p>
+                Currently logged in as {this.props.staffRole}
+              </p>
+            }
           </Box>
         </Drawer>
       </div>
