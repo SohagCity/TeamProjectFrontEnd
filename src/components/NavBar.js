@@ -1,5 +1,5 @@
 import React from "react";
-import Axios from "axios";
+import axios from "axios";
 import APIURL from "../misc/backend";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -55,7 +55,7 @@ class NavBar extends React.Component {
 
   // User authentication via the API url
   formSubmit = () => {
-    Axios.post(`${APIURL}/auth/login`, {
+    axios.post(`${APIURL}/auth/login`, {
       username: this.state.username,
       password: this.state.password
     })

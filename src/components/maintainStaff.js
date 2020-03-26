@@ -1,6 +1,8 @@
 import React from 'react'
 import '../App.scss'
 import Typography from '@material-ui/core/Typography'
+import axios from 'axios'
+import APIURL from '../misc/backend.js'
 
 class MaintainStaff extends React.Component {
   constructor (props) {
@@ -20,7 +22,7 @@ class MaintainStaff extends React.Component {
 
 
   formSubmit = () => {
-    Axios.post(`${APIURL}/auth/register?secret_token=${this.props.token}`, {
+    axios.post(`${APIURL}/auth/register?secret_token=${this.props.token}`, {
       name: this.newEmployee.name,
       surname: this.newEmployee.surname,
       role: this.newEmployee.role,
@@ -39,7 +41,7 @@ class MaintainStaff extends React.Component {
   render () {
     return (
       <div>
-        <Typography variant="h6" style={{ position: "absolute" }}>Staff management:</Typography>
+        <h1>Staff management:</h1>
       </div>
     )
   }
