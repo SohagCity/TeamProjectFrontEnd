@@ -53,7 +53,10 @@ class App extends React.Component {
                staffName={this.state.staffName}
                staffRole={this.state.userRole}
              />
-            {this.state.userLoggedIn ? <HomePage/> : <LandingPage/> }
+            {
+              this.state.userLoggedIn
+              ? <HomePage token={this.state.usertoken}/> 
+              : <LandingPage/> }
           </div>
         )}/>
       </Switch>
