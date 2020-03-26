@@ -28,10 +28,7 @@ class MaintainStaff extends React.Component {
       password: this.newEmployee.password
     })
       .then(response => {
-        // Store the token in local storage, under key 'usertoken'
-        localStorage.setItem('usertoken', JSON.stringify(response.data))
-        window.location.reload()
-        console.log()
+        /////////////////////
       })
       .catch(error => {
         console.log(error)
