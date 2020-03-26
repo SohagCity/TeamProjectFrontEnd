@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import APIURL from "../misc/backend";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -17,8 +16,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
+
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -27,7 +25,7 @@ class NavBar extends React.Component {
       username: "",
       password: "",
       open: false,
-      loginFailed: false,
+      unauthorised: false,
       sideMenuOpen: false
     };
   }
@@ -66,7 +64,7 @@ class NavBar extends React.Component {
         console.log()
       })
       .catch(error => {
-        this.setState({ loginFailed: true });
+        this.setState({ unauthorised: true });
       });
   };
 
@@ -77,9 +75,21 @@ class NavBar extends React.Component {
     console.log()
   }
 
+
   // The nav bar along with buttons
   render() {
-    const { classes } = this.props;
+    let wrongCredentials;
+    // Display erorr message when not authorised and reload the page
+    if (this.state.unauthorised) {
+      wrongCredentials = 
+      <DialogContentText color="error">
+        Username/password combination wrong or account doesn't exist
+      </DialogContentText>
+      setTimeout( 
+        function() {
+          window.location.reload(true);
+        }, 500);
+    }
     return (
       <div>
         <AppBar position="static" style={{ background: "#212121" }}>
@@ -124,6 +134,7 @@ class NavBar extends React.Component {
                   credentials. To register, or reset your password, contact the
                   administrator.
                 </DialogContentText>
+                {wrongCredentials}
                 <TextField
                   required
                   variant="standard"

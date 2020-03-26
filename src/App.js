@@ -30,7 +30,7 @@ class App extends React.Component {
     }
   }
 
-  // Load the user ID to query
+  // Load the user ID and update state from res
   async componentDidMount() {
     await axios.get(
       `${APIURL}/auth/profileInfo?secret_token=${this.state.usertoken}`)
@@ -53,10 +53,12 @@ class App extends React.Component {
                staffName={this.state.staffName}
                staffRole={this.state.userRole}
              />
+              {/* If logged in redirect to homepage and mount appropriate components, else display landing*/}
             {
               this.state.userLoggedIn
-              ? <HomePage token={this.state.usertoken}/> 
-              : <LandingPage/> }
+              ? <HomePage token={this.state.usertoken} staffRole={this.state.userRole} /> 
+              : <LandingPage/> 
+            }
           </div>
         )}/>
       </Switch>
