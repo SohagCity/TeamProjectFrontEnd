@@ -58,13 +58,8 @@ export default function NavBar() {
         </ListItem>
 
         <Divider />
-        <ListItem
-          button
-          component="a"
-          href="/travelAgents"
-          key={"travelAgents"}
-        >
-          <ListItemText primary={"Travel Agents"} />
+        <ListItem button component="a" href="/travelAgent" key={"travelAgent"}>
+          <ListItemText primary={"Travel Agent"} />
         </ListItem>
 
         <Divider />
@@ -91,6 +86,10 @@ export default function NavBar() {
         <ListItem button component="a" href="/users" key={"Users"}>
           <ListItemText primary={"Users"} />
         </ListItem>
+        <ListItem button component="a" href="/discounts" key={"discounts"}>
+          <ListItemText primary={"Discounts"} />
+        </ListItem>
+
         <Divider />
         <ListItem
           button

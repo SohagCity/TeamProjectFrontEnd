@@ -2,6 +2,8 @@ import React from "react";
 import MaterialTable from "material-table";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ErrorIcon from "@material-ui/icons/Error";
+import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
+import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 
 class Blanks extends React.Component {
   constructor(props) {
@@ -10,6 +12,7 @@ class Blanks extends React.Component {
       columns: [
         { title: "Blank Id", field: "blankId" },
         { title: "Blank Type", field: "blankType", editable: "never" },
+        { title: "Date", field: "date", editable: "never" },
         { title: "Coupons", field: "coupons", editable: "never" },
         { title: "Assigned To", field: "assigned" },
         { title: "Status", field: "status" }
@@ -130,6 +133,18 @@ class Blanks extends React.Component {
               icon: ArrowBackIcon,
               tooltip: "return",
               onClick: (event, rowData) => this.lostStolenBlank(event, rowData)
+            },
+            {
+              icon: LibraryAddIcon,
+              tooltip: "Add in range",
+              isFreeAction: true,
+              onClick: event => (window.location = "/blankRange")
+            },
+            {
+              icon: DoubleArrowIcon,
+              tooltip: "Assign in range",
+              isFreeAction: true,
+              onClick: event => (window.location = "/assignRange")
             }
           ]}
           editable={{

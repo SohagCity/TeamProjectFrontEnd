@@ -37,3 +37,8 @@ a {
   font-size: 0.625em;
   display: relative;
 }
+
+.table th,
+td {
+  border: 1px solid rgb(0, 0, 0);
+}

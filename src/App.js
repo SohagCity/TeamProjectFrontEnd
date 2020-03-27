@@ -13,11 +13,13 @@ import Customers from "./pages/Customers";
 import Users from "./pages/Users";
 import EditUser from "./pages/EditUser";
 import Tickets from "./pages/Tickets";
-import TravelAgents from "./pages/TravelAgents";
 import Currencies from "./pages/Currencies";
 import Commissions from "./pages/Commissions";
 import Discounts from "./pages/Discounts";
-
+import TravelAgent from "./pages/TravelAgent";
+import BlankRange from "./pages/BlankRange";
+import AssignRange from "./pages/AssignRange";
+import TurnoverReport from "./components/TurnoverReport";
 function App() {
   return (
     <Router>
@@ -35,10 +37,14 @@ function App() {
           <Route exact path="/users" component={Users} />
           <Route exact path="/users/edit/:id" component={EditUser} />
           <Route exact path="/tickets" component={Tickets} />
-          <Route exact path="/travelAgents" component={TravelAgents} />
           <Route exact path="/currencies" component={Currencies} />
           <Route exact path="/commissions" component={Commissions} />
           <Route exact path="/discounts" component={Discounts} />
+          <Route exact path="/travelAgent" component={TravelAgent} />
+          <Route exact path="/blankRange" component={BlankRange} />
+          <Route exact path="/assignRange" component={AssignRange} />
+
+          <Route exact path="/turnoverReport" component={TurnoverReport} />
         </Switch>
       </div>
     </Router>
