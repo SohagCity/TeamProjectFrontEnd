@@ -11,6 +11,7 @@
     "@testing-library/jest-dom": "^5.0.2",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^8.0.4",
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "material-table": "^1.57.2",
     "node-sass": "^4.13.1",

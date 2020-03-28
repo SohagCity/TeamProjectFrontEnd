@@ -4,6 +4,7 @@ import 'react-credit-cards/lib/styles.scss';
 import TextField from '@material-ui/core/TextField';
 import '../App.scss'
 
+// test of the payment form 
 export default class PaymentForm extends React.Component {
   state = {
     cvc: '',

@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import NavBar from "./components/NavBar";
 import Login from "./pages/Login";
-import Home from "./pages/Home";
-import PaymentTest from "./pages/PaymentTest";
+import Home from "./pages/HomePage";
 import CreateUser from "./pages/CreateUser";
 import RecordSale from "./pages/RecordSale";
 import BackupSettings from "./pages/BackupSettings";
@@ -28,7 +27,6 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/payment" component={PaymentTest} />
           <Route exact path="/users/add" component={CreateUser} />
           <Route exact path="/recordSale" component={RecordSale} />
           <Route exact path="/backupSettings" component={BackupSettings} />
