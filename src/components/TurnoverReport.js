@@ -17,50 +17,44 @@ const useStyles = theme => ({
   }
 });
 class TurnoverReport extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      agent: "",
-      date: "",
-      data: [
-        {
-          stockFrom: "",
-          stockTo: "",
-          stockAmount: "",
-          substockCode: "",
-          subStockFrom: "",
-          subStockTo: "",
-          subStockAmount: "",
-          assignedFrom: "",
-          assignedTo: "",
-          assignedAmount: "",
-          assignedCode: "",
-          usedFrom: "",
-          usedTo: "",
-          usedAmount: "",
-          usedCode: "",
-          amountFrom: "",
-          amountTo: "",
-          amountAmount: "",
-          subAmountFrom: "",
-          subAmountTo: "",
-          subAmountAmount: "",
-          subAmountCode: ""
-        }
-      ],
-      totals: [
-        {
-          agentStock: 0,
-          subAgentStock: 0,
-          used: 0,
-          assigned: 0,
-          agentAmount: 0,
-          subAgentAmounts: 0
-        }
-      ]
-    };
-  }
+  state = {
+    agent: "",
+    date: "",
+    data: [
+      {
+        stockFrom: "",
+        stockTo: "",
+        stockAmount: "",
+        substockCode: "",
+        subStockFrom: "",
+        subStockTo: "",
+        subStockAmount: "",
+        assignedFrom: "",
+        assignedTo: "",
+        assignedAmount: "",
+        assignedCode: "",
+        usedFrom: "",
+        usedTo: "",
+        usedAmount: "",
+        usedCode: "",
+        amountFrom: "",
+        amountTo: "",
+        amountAmount: "",
+        subAmountFrom: "",
+        subAmountTo: "",
+        subAmountAmount: "",
+        subAmountCode: ""
+      }
+    ],
+    totals: {
+      agentStock: 0,
+      subAgentStock: 0,
+      used: 0,
+      assigned: 0,
+      agentAmount: 0,
+      subAgentAmounts: 0
+    }
+  };
 
   render() {
     const { classes } = this.props;
@@ -70,6 +64,15 @@ class TurnoverReport extends Component {
         <TableContainer component={Paper}>
           <Table className={classes.table}>
             <TableHead>
+              <TableRow>
+                AGENT: {this.state.agent} {"\n"}
+                report period: {this.state.date}
+              </TableRow>
+              <TableRow>
+                <TableCell align="center" colSpan={28}>
+                  AGENT'S STOCK STATUS REPORT
+                </TableCell>
+              </TableRow>
               <TableRow>
                 <TableCell rowSpan={3}>NN</TableCell>
                 <TableCell align="center" colSpan={5}>

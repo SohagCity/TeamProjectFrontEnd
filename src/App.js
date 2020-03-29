@@ -19,6 +19,12 @@ import TravelAgent from "./pages/TravelAgent";
 import BlankRange from "./pages/BlankRange";
 import AssignRange from "./pages/AssignRange";
 import TurnoverReport from "./components/TurnoverReport";
+import InterlineIndividual from "./components/InterlineIndividual";
+import InterlineGlobal from "./components/InterlineGlobal";
+import DomesticIndividual from "./components/DomesticIndividual";
+import DomesticGlobal from "./components/DomesticGlobal";
+import SelectReport from "./pages/SelectReport";
+
 function App() {
   return (
     <Router>
@@ -41,7 +47,20 @@ function App() {
           <Route exact path="/travelAgent" component={TravelAgent} />
           <Route exact path="/blankRange" component={BlankRange} />
           <Route exact path="/assignRange" component={AssignRange} />
+          <Route exact path="/SelectReport" component={SelectReport} />
 
+          <Route
+            exact
+            path="/InterlineIndividual"
+            component={InterlineIndividual}
+          />
+          <Route
+            exact
+            path="/DomesticIndividual"
+            component={DomesticIndividual}
+          />
+          <Route exact path="/DomesticGlobal" component={DomesticGlobal} />
+          <Route exact path="/InterlineGlobal" component={InterlineGlobal} />
           <Route exact path="/turnoverReport" component={TurnoverReport} />
         </Switch>
       </div>
